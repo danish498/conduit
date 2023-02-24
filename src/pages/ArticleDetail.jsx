@@ -56,7 +56,7 @@ const ArticleDetail = () => {
       setFavorited(true);
       setFavoritesCount(favoritesCount + 1);
     } catch (error) {
-      navigate('/');
+      navigate('/register');
     }
   };
 
@@ -66,7 +66,7 @@ const ArticleDetail = () => {
       setFavorited(false);
       setFavoritesCount(favoritesCount - 1);
     } catch (error) {
-      navigate('/');
+      navigate('/register');
     }
   };
 
@@ -86,7 +86,7 @@ const ArticleDetail = () => {
       );
       setFollowing(response.data.profile.following);
     } catch (error) {
-      navigate('/');
+      navigate('/register');
 
       console.log(error);
     }
@@ -99,7 +99,7 @@ const ArticleDetail = () => {
       );
       setFollowing(response.data.profile.following);
     } catch (error) {
-      navigate('/');
+      navigate('/register');
 
       console.log(error);
     }
