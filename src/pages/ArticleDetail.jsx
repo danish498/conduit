@@ -21,9 +21,7 @@ const ArticleDetail = () => {
   const [isDisabled, setIsDisabled] = useState(false);
 
   const { username } = useSelector((state) => state.persistedReducer.auth);
-  // console.log('CHECK THE FOLLOWING RESPONSE OVER HERE', following);
 
-  // console.log('CHECK THE FAVAFASDKFJASDFASDF COUNDT', favoritesCount);
   const dispatch = useDispatch();
   const { comments } = useSelector((state) => state.comments);
 
@@ -57,7 +55,9 @@ const ArticleDetail = () => {
       await APIClient.AxiosInstance.post(`articles/${slug}/favorite`);
       setFavorited(true);
       setFavoritesCount(favoritesCount + 1);
-    } catch (error) {}
+    } catch (error) {
+      navigate('/');
+    }
   };
 
   const unFavCount = async () => {
@@ -65,7 +65,9 @@ const ArticleDetail = () => {
       await APIClient.AxiosInstance.delete(`articles/${slug}/favorite`);
       setFavorited(false);
       setFavoritesCount(favoritesCount - 1);
-    } catch (error) {}
+    } catch (error) {
+      navigate('/');
+    }
   };
 
   const handleFavoriteCount = async () => {
@@ -84,6 +86,8 @@ const ArticleDetail = () => {
       );
       setFollowing(response.data.profile.following);
     } catch (error) {
+      navigate('/');
+
       console.log(error);
     }
   };
@@ -95,6 +99,8 @@ const ArticleDetail = () => {
       );
       setFollowing(response.data.profile.following);
     } catch (error) {
+      navigate('/');
+
       console.log(error);
     }
   };
